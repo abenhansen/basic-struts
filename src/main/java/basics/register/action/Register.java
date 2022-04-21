@@ -7,7 +7,15 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.validation.SkipValidation;
+
+@Results({
+        @Result(name="success", location="thankyou.jsp"),
+        @Result(name="input", location="registerPerson.jsp"),
+})
 
 public class Register extends ActionSupport {
     private static final long serialVersionUID = 1L;
@@ -15,16 +23,19 @@ public class Register extends ActionSupport {
     private static final Logger log = LogManager.getLogger(Register.class);
 
 
+    @Action("register")
     public String execute() throws Exception {
         log.debug("In execute method of class Register");
         return SUCCESS;
     }
 
-    @Action("register-input")
+    @Action("registerPerson")
+    @SkipValidation
     public String input() throws Exception {
         log.debug("In input method of class Register");
         return INPUT;
     }
+
     public Person getPersonBean() {
         return personBean;
     }
@@ -49,8 +60,8 @@ public class Register extends ActionSupport {
         }
     }
 
+    @Action("causeexception")
     public void throwException() throws Exception {
-
         throw new Exception("Exception thrown from throwException");
 
     }

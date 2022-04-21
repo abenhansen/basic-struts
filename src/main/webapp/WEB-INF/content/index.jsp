@@ -16,7 +16,7 @@
 <p><a href="${helloLink}">Hello Bruce Phillips</a></p>
 
 
-<s:url action="register-input" var="registerInputLink" />
+<s:url action="registerPerson" var="registerInputLink" />
 <p><a href="${registerInputLink}">Please register</a> for our prize drawing.</p>
 
 <p><a href='<s:url action="editPerson" />' >Edit your information</a></p>
@@ -24,7 +24,7 @@
 
 
 <h3>Registrer på dansk</h3>
-<s:url action="registerInput" var="registerInputLinkDA">
+<s:url action="registerPerson" var="registerInputLinkDA">
   <s:param name="request_locale">da</s:param>
 </s:url>
 <p><s:a href="%{registerInputLinkDA}">Venligst registrere</s:a> for at deltage i vores pris udtrækning</p>
