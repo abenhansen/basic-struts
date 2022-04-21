@@ -19,6 +19,7 @@
         </interceptors>
 
         <default-interceptor-ref name="appDefault" />
+
         <global-results>
             <result name="error">/error.jsp</result>
             <result name="securityerror">/securityerror.jsp</result>
@@ -28,6 +29,21 @@
             <exception-mapping exception="basics.register.exceptions.SecurityBreachException" result="securityerror" />
             <exception-mapping exception="java.lang.Exception" result="error" />
         </global-exception-mappings>
+
+        <action name="causesecurityexception" class="basics.register.action.Register"
+                method="throwSecurityException">
+            <result>/WEB-INF/content/registerPerson.jsp</result>
+        </action>
+
+        <action name="causeexception" class="basics.register.action.Register" method="throwException">
+            <result>/WEB-INF/content/registerPerson.jsp</result>
+        </action>
+
+        <action name="causenullpointerexception" class="basics.register.action.Register"
+                method="throwNullPointerException">
+            <result>/WEB-INF/content/registerPerson.jsp</result>
+        </action>
+
     </package>
 
 

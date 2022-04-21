@@ -15,6 +15,7 @@ import org.apache.struts2.interceptor.validation.SkipValidation;
 @Results({
         @Result(name="success", location="thankyou.jsp"),
         @Result(name="input", location="registerPerson.jsp"),
+        @Result(name="error", location="registerPerson.jsp"),
 })
 
 public class Register extends ActionSupport {
@@ -60,10 +61,8 @@ public class Register extends ActionSupport {
         }
     }
 
-    @Action("causeexception")
     public void throwException() throws Exception {
         throw new Exception("Exception thrown from throwException");
-
     }
 
     public void throwNullPointerException() throws NullPointerException {
