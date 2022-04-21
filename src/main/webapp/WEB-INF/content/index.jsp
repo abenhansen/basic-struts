@@ -16,7 +16,7 @@
 <p><a href="${helloLink}">Hello Bruce Phillips</a></p>
 
 
-<s:url action="registerInput" var="registerInputLink" />
+<s:url action="register-input" var="registerInputLink" />
 <p><a href="${registerInputLink}">Please register</a> for our prize drawing.</p>
 
 <p><a href='<s:url action="editPerson" />' >Edit your information</a></p>

@@ -5,13 +5,12 @@ import basics.helloworld.model.MessageStore;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class HelloWorldAction extends ActionSupport {
+public class HelloAction extends ActionSupport {
     private MessageStore messageStore;
     private String userName;
     private static int helloCount = 0;
 
-    private static final Logger log = LogManager.getLogger(HelloWorldAction.class);
-
+    private static final Logger log = LogManager.getLogger(HelloAction.class);
 
 
     public String execute() {
