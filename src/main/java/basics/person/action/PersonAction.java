@@ -2,9 +2,12 @@ package basics.person.action;
 
 import basics.person.model.Person;
 import basics.person.model.State;
+import basics.person.service.CarModelsService;
+import basics.person.service.CarModelsServiceHardCoded;
 import basics.person.service.PeopleService;
 import basics.person.service.PersonService;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
@@ -18,7 +21,7 @@ import java.util.*;
         @Result(name="input", location="editPerson.jsp"),
 })
 
-public class PersonAction extends ActionSupport {
+public class PersonAction extends ActionSupport implements Preparable {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,9 +37,24 @@ public class PersonAction extends ActionSupport {
 
     private List<State> states ;
 
-    private String [] carModelsAvailable = {"Ford","Chrysler","Toyota","Nissan", "Audi", "Tesla", "Mercedes", "Volkswagen"};
+    private CarModelsService carModelsService = new CarModelsServiceHardCoded();
+
+    private String[] carModelsAvailable;
 
     private static final Logger log = LogManager.getLogger(PersonAction.class);
+
+    @Override
+    public void prepare() throws Exception {
+        log.debug("In prepare method...");
+        carModelsAvailable = carModelsService.getCarModels();
+        if (id != 0)
+            personBean = peopleService.getPerson(id);
+        else personBean = new Person();
+    }
+
+    public void prepareExecute() {
+        log.debug("In prepareExecute method...");
+    }
 
     @SkipValidation
     @Action("people")
@@ -60,8 +78,10 @@ public class PersonAction extends ActionSupport {
     @Action("editPerson")
     public String edit() throws Exception {
         log.debug("In edit method");
-        if(id != 0)
+        if (id != 0) {
+            log.debug("Updating :" + personBean.getId());
             personBean = peopleService.getPerson(id);
+        }
         else personBean = new Person();
         return INPUT;
     }
