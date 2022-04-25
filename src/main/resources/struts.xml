@@ -8,7 +8,6 @@
 <struts>
     <constant name="struts.devMode" value="true" />
     <constant name="struts.custom.i18n.resources" value="everywhere" />
-    <constant name="struts.convention.result.path" value="basics" />
 
     <package name="basicstruts2" extends="struts-default">
         <interceptors>
