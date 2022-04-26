@@ -7,6 +7,7 @@ import basics.person.service.PersonService;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import java.util.*;
@@ -49,6 +50,7 @@ public class PersonAction extends ActionSupport {
     }*/
 
     @SkipValidation
+    @Action("editPerson")
     public String edit() throws Exception {
         log.debug("In edit method");
         if(id != 0)
