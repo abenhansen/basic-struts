@@ -14,13 +14,15 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.validation.SkipValidation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 @Results({
         @Result(name="success", location="peopleView.jsp"),
         @Result(name="input", location="editPerson.jsp"),
 })
-
+@Component
 public class PersonAction extends ActionSupport implements Preparable {
 
     private static final long serialVersionUID = 1L;
@@ -28,6 +30,7 @@ public class PersonAction extends ActionSupport implements Preparable {
     private PersonService peopleService;
 
     private Person personBean;
+
     int id;
     private static SortedMap<Integer, Person> people = PeopleService.getPeople();
 
