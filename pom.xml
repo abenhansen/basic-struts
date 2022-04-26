@@ -47,17 +47,34 @@
             <version>2.5.30</version>
         </dependency>
 
-      <!--  <dependency>
+        <dependency>
             <groupId>org.apache.struts</groupId>
-            <artifactId>struts2-convention-plugin</artifactId>
+            <artifactId>struts2-junit-plugin</artifactId>
             <version>2.5.30</version>
-        </dependency>-->
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.3</version>
+            <scope>provided</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>
-        <finalName>basic-struts</finalName>
+        <finalName>basics-struts</finalName>
         <plugins>
-          <!--  <plugin>
+     <!--       <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>10.0.9</version>

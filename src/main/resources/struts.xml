@@ -15,7 +15,10 @@
                 <interceptor-ref name="defaultStack">
                     <param name="exception.logEnabled">true</param>
                     <param name="exception.logLevel">ERROR</param>
+                    <param name="params.excludeParams">dojo..*,^struts..*,^session..*,^request..*,^application..*,^servlet(Request|Response)..*,parameters...*</param>
                 </interceptor-ref>
+                <interceptor-ref name="timer" />
+                <interceptor-ref name="logger" />
             </interceptor-stack>
         </interceptors>
 
@@ -30,6 +33,7 @@
             <exception-mapping exception="basics.register.exceptions.SecurityBreachException" result="securityerror" />
             <exception-mapping exception="java.lang.Exception" result="error" />
         </global-exception-mappings>
+
 
         <action name="index">
             <result>/index.jsp</result>

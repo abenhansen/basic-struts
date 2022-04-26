@@ -2,16 +2,19 @@ package basics.person.action;
 
 import basics.person.model.Person;
 import basics.person.model.State;
+import basics.person.service.CarModelsService;
+import basics.person.service.CarModelsServiceHardCoded;
 import basics.person.service.PeopleService;
 import basics.person.service.PersonService;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.Preparable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import java.util.*;
 
-public class PersonAction extends ActionSupport {
+public class PersonAction extends ActionSupport implements Preparable {
 
     private static final long serialVersionUID = 1L;
 
@@ -21,13 +24,15 @@ public class PersonAction extends ActionSupport {
     int id;
     private static SortedMap<Integer, Person> people = PeopleService.getPeople();
 
-    private String [] sports = {"football", "baseball", "basketball", "Table Tennis" };
+    private String[] sports = {"football", "baseball", "basketball", "Table Tennis"};
 
-    private String [] genders = {"male", "female", "not sure" };
+    private String[] genders = {"male", "female", "not sure"};
 
-    private List<State> states ;
+    private List<State> states;
 
-    private String [] carModelsAvailable = {"Ford","Chrysler","Toyota","Nissan", "Audi", "Tesla", "Mercedes", "Volkswagen"};
+    private CarModelsService carModelsService = new CarModelsServiceHardCoded();
+
+    private String[] carModelsAvailable;
 
     private static final Logger log = LogManager.getLogger(PersonAction.class);
 
@@ -39,6 +44,18 @@ public class PersonAction extends ActionSupport {
         return SUCCESS;
     }
 
+    @Override
+    public void prepare() throws Exception {
+        log.debug("In prepare method...");
+        carModelsAvailable = carModelsService.getCarModels();
+        if (id != 0)
+            personBean = peopleService.getPerson(id);
+        else personBean = new Person();
+    }
+
+    public void prepareExecute() {
+        log.debug("In prepareExecute method...");
+    }
 
 /*    public String input() throws Exception {
         log.debug("In input method");
@@ -51,7 +68,7 @@ public class PersonAction extends ActionSupport {
     @SkipValidation
     public String edit() throws Exception {
         log.debug("In edit method");
-        if(id != 0)
+        if (id != 0)
             personBean = peopleService.getPerson(id);
         else personBean = new Person();
         return INPUT;
@@ -60,7 +77,7 @@ public class PersonAction extends ActionSupport {
     public String saveOrUpdate() {
         log.debug("In saveOrUpdate method");
         if (personBean.getId() != 0) {
-            log.debug("Updating :" + personBean.getId() );
+            log.debug("Updating :" + personBean.getId());
             peopleService.update(personBean);
         } else {
             log.debug("New");
@@ -87,9 +104,7 @@ public class PersonAction extends ActionSupport {
     }
 
     public List<String> getGenders() {
-
         return Arrays.asList(genders);
-
     }
 
     public List<Person> getPeople() {
@@ -98,17 +113,15 @@ public class PersonAction extends ActionSupport {
 
     public List<State> getStates() {
         states = new ArrayList<State>();
-        states.add( new State("AZ", "Arizona") );
-        states.add( new State("CA", "California") );
-        states.add( new State("FL", "Florida") );
-        states.add( new State("KS", "Kansas") );
-        states.add( new State("NY", "New York") );
-
+        states.add(new State("AZ", "Arizona"));
+        states.add(new State("CA", "California"));
+        states.add(new State("FL", "Florida"));
+        states.add(new State("KS", "Kansas"));
+        states.add(new State("NY", "New York"));
         return states;
     }
 
-
-    public String [] getCarModelsAvailable() {
+    public String[] getCarModelsAvailable() {
         return carModelsAvailable;
     }
 
@@ -119,10 +132,8 @@ public class PersonAction extends ActionSupport {
     public void setId(int id) {
         this.id = id;
     }
+
     public void setPersonService(PersonService peopleService) {
         this.peopleService = peopleService;
     }
-
-
-
 }
