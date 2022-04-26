@@ -8,9 +8,15 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
 import java.util.*;
+@Results({
+        @Result(name="success", location="peopleView.jsp"),
+        @Result(name="input", location="editPerson.jsp"),
+})
 
 public class PersonAction extends ActionSupport {
 
@@ -33,6 +39,7 @@ public class PersonAction extends ActionSupport {
     private static final Logger log = LogManager.getLogger(PersonAction.class);
 
     @SkipValidation
+    @Action("people")
     public String execute() throws Exception {
         log.debug("In execute method");
         System.out.println("People" + people);
@@ -59,6 +66,9 @@ public class PersonAction extends ActionSupport {
         return INPUT;
     }
 
+    @Action(value = "saveOrUpdatePerson", results = {
+            @Result(name="success", location="thankyou.jsp")
+    } )
     public String saveOrUpdate() {
         log.debug("In saveOrUpdate method");
         if (personBean.getId() != 0) {
