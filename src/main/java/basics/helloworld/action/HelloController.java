@@ -29,6 +29,7 @@ public class HelloController extends RestActionSupport implements SessionAware, 
         if (userName != null) {
             model.setMessage(" " + userName);
         }
+        if(userSession.get(HELLO_COUNT) != null)
         message+= "\n I've said hello " + userSession.get(HELLO_COUNT)+ " times!";
         model.setMessage(message);
 
