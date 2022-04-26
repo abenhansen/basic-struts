@@ -6,5 +6,7 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="personService" class="basics.person.service.PeopleService" />
+    <bean id="personBean" class="basics.person.model.Person"/>
+    <bean id="registerPersonBean" class="basics.register.model.Person"/>
 
 </beans>
