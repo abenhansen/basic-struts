@@ -1,19 +1,15 @@
 package basics.register.action;
 
-import basics.helloworld.action.HelloAction;
 import basics.register.exceptions.SecurityBreachException;
 import basics.register.model.Person;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.validation.SkipValidation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Results({
         @Result(name="success", location="thankyou.jsp"),
