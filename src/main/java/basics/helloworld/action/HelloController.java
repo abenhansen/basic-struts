@@ -9,19 +9,22 @@ import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.rest.DefaultHttpHeaders;
 import org.apache.struts2.rest.HttpHeaders;
 import org.apache.struts2.rest.RestActionSupport;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+@Component
 public class HelloController extends RestActionSupport implements SessionAware, ParameterNameAware, ModelDriven<MessageStore> {
 
-    private MessageStore model = new MessageStore();;
+    private MessageStore model = new MessageStore();
+    ;
     private String userName;
     private static int helloCount = 0;
-    private Map<String, Object> userSession ;
+    private Map<String, Object> userSession;
     private static final String HELLO_COUNT = "helloCount";
     private static final Logger log = LogManager.getLogger(HelloController.class);
 
-    //BEFORE
+
     public HttpHeaders index() {
         log.debug("In execute method of class Hello");
         //MessageStore newStore = new MessageStore();
@@ -29,8 +32,8 @@ public class HelloController extends RestActionSupport implements SessionAware, 
         if (userName != null) {
             model.setMessage(" " + userName);
         }
-        if(userSession.get(HELLO_COUNT) != null)
-        message+= "\n I've said hello " + userSession.get(HELLO_COUNT)+ " times!";
+        if (userSession.get(HELLO_COUNT) != null)
+            message += "\n I've said hello " + userSession.get(HELLO_COUNT) + " times!";
         model.setMessage(message);
 
         //model = newStore;
@@ -41,7 +44,7 @@ public class HelloController extends RestActionSupport implements SessionAware, 
 
     private void increaseHelloCount() {
         Integer helloCount = (Integer) userSession.get(HELLO_COUNT);
-        if (helloCount == null ) {
+        if (helloCount == null) {
             helloCount = 1;
         } else {
             helloCount++;
@@ -51,14 +54,14 @@ public class HelloController extends RestActionSupport implements SessionAware, 
 
     @Override
     public void setSession(Map<String, Object> session) {
-        userSession = session ;
+        userSession = session;
     }
 
     public boolean acceptableParameterName(String parameterName) {
-        boolean allowedParameterName = true ;
+        boolean allowedParameterName = true;
 
-        if ( parameterName.contains("session")  || parameterName.contains("request") ) {
-            allowedParameterName = false ;
+        if (parameterName.contains("session") || parameterName.contains("request")) {
+            allowedParameterName = false;
         }
 
         return allowedParameterName;
@@ -75,6 +78,7 @@ public class HelloController extends RestActionSupport implements SessionAware, 
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
     public void setModel(MessageStore model) {
         this.model = model;
     }

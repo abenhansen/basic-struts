@@ -9,16 +9,18 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.validation.SkipValidation;
+import org.springframework.stereotype.Component;
 
 @Results({
         @Result(name="success", location="thankyou.jsp"),
         @Result(name="input", location="registerPerson.jsp"),
         @Result(name="error", location="registerPerson.jsp"),
 })
-
+@Component
 public class Register extends ActionSupport {
     private static final long serialVersionUID = 1L;
-    private Person personBean;
+
+    private Person registerPersonBean;
     private static final Logger log = LogManager.getLogger(Register.class);
 
 
@@ -35,26 +37,26 @@ public class Register extends ActionSupport {
         return INPUT;
     }
 
-    public Person getPersonBean() {
-        return personBean;
+    public Person getRegisterPersonBean() {
+        return registerPersonBean;
     }
 
-    public void setPersonBean(Person person) {
-        personBean = person;
+    public void setRegisterPersonBean(Person person) {
+        registerPersonBean = person;
     }
 
     public void validate(){
-        if(personBean == null)
+        if(registerPersonBean == null)
                 return;
-        if (personBean.getFirstName().length() == 0) {
+        if (registerPersonBean.getFirstName().length() == 0) {
             addFieldError("personBean.firstName", "First name is required.");
         }
 
-        if (personBean.getEmail().length() == 0) {
+        if (registerPersonBean.getEmail().length() == 0) {
             addFieldError("personBean.email", "Email is required.");
         }
 
-        if (personBean.getAge() < 18) {
+        if (registerPersonBean.getAge() < 18) {
             addFieldError("personBean.age", "Age is required and must be 18 or older");
         }
     }
