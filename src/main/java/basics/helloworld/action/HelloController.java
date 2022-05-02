@@ -24,7 +24,7 @@ public class HelloController extends RestActionSupport implements SessionAware, 
     private static final String HELLO_COUNT = "helloCount";
     private static final Logger log = LogManager.getLogger(HelloController.class);
 
-
+    //BEFORE
     public HttpHeaders index() {
         log.debug("In execute method of class Hello");
         //MessageStore newStore = new MessageStore();
