@@ -10,10 +10,18 @@
     <constant name="struts.custom.i18n.resources" value="everywhere" />
     <constant name="struts.mapper.class" value="rest" />
 
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <constant name="struts.mapper.alwaysSelectFullNamespace" value="false"/>
+    <constant name="struts.patternMatcher" value="regex" />
+
     <constant name="struts.convention.action.suffix" value="Controller"/>
     <constant name="struts.convention.action.mapAllMatches" value="true"/>
     <constant name="struts.convention.default.parent.package" value="rest-default"/>
     <constant name="struts.convention.package.locators" value="basics"/>
+    <constant name="struts.rest.content.restrictToGET" value="false"/>
+    <constant name="struts.rest.defaultExtension" value="json"/>
+
+
 
 
     <package name="basicstruts2" extends="struts-default">
@@ -22,10 +30,10 @@
                 <interceptor-ref name="defaultStack">
                     <param name="exception.logEnabled">true</param>
                     <param name="exception.logLevel">ERROR</param>
-                    <param name="params.excludeParams">dojo..*,^struts..*,^session..*,^request..*,^application..*,^servlet(Request|Response)..*,parameters...*</param>
                 </interceptor-ref>
                 <interceptor-ref name="timer" />
                 <interceptor-ref name="logger" />
+
             </interceptor-stack>
         </interceptors>
 

@@ -5,6 +5,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.interceptor.ParameterNameAware;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.rest.DefaultHttpHeaders;
 import org.apache.struts2.rest.HttpHeaders;
@@ -22,6 +23,7 @@ public class HelloController extends RestActionSupport implements SessionAware, 
     private static final Logger log = LogManager.getLogger(HelloController.class);
 
 
+    @Action("/hey")
     public HttpHeaders index() {
         log.debug("In execute method of class Hello");
         //MessageStore newStore = new MessageStore();
