@@ -1,8 +1,8 @@
-package basics.profile.action;
+package basics.controllers;
 
-import basics.profile.model.Profile;
-import basics.profile.model.ProfileDTO;
-import basics.profile.repositories.ProfileRepository;
+import basics.models.Profile;
+import basics.models.ProfileDTO;
+import basics.repositories.ProfileRepository;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

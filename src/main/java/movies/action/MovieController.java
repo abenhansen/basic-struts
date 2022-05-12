@@ -1,6 +1,5 @@
 package movies.action;
 
-import basics.helloworld.action.HelloController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.struts2.rest.DefaultHttpHeaders;

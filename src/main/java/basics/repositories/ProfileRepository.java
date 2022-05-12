@@ -1,6 +1,6 @@
-package basics.profile.repositories;
+package basics.repositories;
 
-import basics.profile.model.Profile;
+import basics.models.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

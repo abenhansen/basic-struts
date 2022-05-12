@@ -1,4 +1,4 @@
-package basics.profile.service;
+package basics.services;
 
 import java.util.ArrayList;
 

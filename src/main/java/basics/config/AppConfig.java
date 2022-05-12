@@ -1,12 +1,8 @@
 package basics.config;
 
-import basics.profile.model.Profile;
-import basics.profile.repositories.ProfileRepository;
-import basics.profile.service.ProfileRepostiory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -22,7 +18,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import java.util.Properties;
 
 @Configuration
 @ComponentScan("basics")

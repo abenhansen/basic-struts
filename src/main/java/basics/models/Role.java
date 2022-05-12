@@ -1,4 +1,4 @@
-package basics.profile.model;
+package basics.models;
 
 import org.hibernate.annotations.GenericGenerator;
 

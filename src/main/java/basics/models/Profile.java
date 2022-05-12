@@ -1,10 +1,9 @@
-package basics.profile.model;
+package basics.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
